@@ -15,7 +15,7 @@ function countDown() {
     
 
     //set up variables for the future time (subject to change)
-    const futureTime = new Date('Sep 17, 2020 17:30:00');
+    const futureTime = new Date('Sep 18, 2020 20:00:00');
     //const laterHour = futureTime.getHours();
     //const laterMinute = futureTime.getMinutes();
     //const laterSeconds = futureTime.getSeconds();
