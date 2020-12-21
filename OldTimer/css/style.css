@@ -21,6 +21,6 @@ section {
     color: white;
     text-shadow: 2px 2px black;
     margin: 0, auto;
-    background-image: url(../img/noah-silliman-vhInzGLpnyI-unsplash.jpg);
+    /* background-image: url(../img/noah-silliman-vhInzGLpnyI-unsplash.jpg); */
     background-size: cover;
 }

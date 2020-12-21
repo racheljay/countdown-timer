@@ -11,14 +11,16 @@ function App() {
     //+ will turn the date object into an integer
     const diff = +new Date(`${year}-12-25`) - +new Date();
     let timeLeft = {}
+    function padZero(num) {return (num < 10) ? ("0" + num) : (num)}
+
     
     if (diff > 0) {
       
       timeLeft = {
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((diff / 1000 / 60) % 60),
-        seconds: Math.floor((diff / 1000) % 60)
+        days: padZero(Math.floor(diff / (1000 * 60 * 60 * 24))),
+        hours: padZero(Math.floor((diff / (1000 * 60 * 60)) % 24)),
+        minutes: padZero(Math.floor((diff / 1000 / 60) % 60)),
+        seconds: padZero(Math.floor((diff / 1000) % 60))
       };
     }
    // else {
@@ -31,20 +33,21 @@ function App() {
   // const [year] = useState(new Date().getFullYear());
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setTimeLeft(calculateTimeLeft())
     }, 1000)
+    return () => clearTimeout(timer)
   });
 
     const timerComponents = [];
 
-    Object.keys(timeLeft).forEach((item) => {
-      if(!timeLeft[item]) {
-        return;
-      }
+    Object.keys(timeLeft).forEach((item, index) => {
+      // if(!timeLeft[item]) {
+      //   return;
+      // }
       timerComponents.push(
-        <span>
-          {timeLeft[item]} {item}{" "}
+        <span key={index}>
+          {(index ? ':' : '') + timeLeft[item]}
         </span>
       )
       
@@ -54,12 +57,12 @@ function App() {
 
   return (
     <>
-      <div>
+      <section>
         <h1>They Are Coming</h1>
         {/* <div>{remainingTime}</div> */}
         {/* <div>{time}</div> */}
-        {timerComponents.length ? timerComponents : <span>Time's up!</span>}
-      </div>
+        <div>{timerComponents.length ? timerComponents : <span>They Are Here</span>}</div>
+      </section>
     </>
 
   );
