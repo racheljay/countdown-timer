@@ -6,10 +6,13 @@ function App() {
 
   
   const calculateTimeLeft = () => {
-    let year = new Date().getFullYear();
+    // let year = new Date().getFullYear();
+    let year = 2021;
+    let month = 7;
+    let day = 29;
     // console.log(year)
     //+ will turn the date object into an integer
-    const diff = +new Date(`${year}-12-25`) - +new Date();
+    const diff = +new Date(`${year}-${month}-${day}`) - +new Date();
     let timeLeft = {}
     function padZero(num) {return (num < 10) ? ("0" + num) : (num)}
 
